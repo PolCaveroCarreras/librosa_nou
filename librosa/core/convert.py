@@ -1209,7 +1209,7 @@ def hz_to_mel(
     frequencies = np.asanyarray(frequencies)
 
     if htk:
-        mels: np.ndarray = 2595.0 * np.log10(1.0 + frequencies / 1000.0) #era 700
+        mels: np.ndarray = 2595.0 * np.log10(1.0 + frequencies / 400.0) #era 700, 1000
         return mels
 
     # Fill in the linear part
@@ -1284,7 +1284,7 @@ def mel_to_hz(
     mels = np.asanyarray(mels)
 
     if htk:
-        return 1000.0 * (10.0 ** (mels / 2595.0) - 1.0) # era 700
+        return 400.0 * (10.0 ** (mels / 2595.0) - 1.0) # era 700, 1000
 
     # Fill in the linear scale
     f_min = 0.0
